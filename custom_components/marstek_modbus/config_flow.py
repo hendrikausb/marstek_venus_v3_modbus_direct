@@ -299,7 +299,7 @@ async def async_test_modbus_connection(host: str, port: int, unit_id: int = 1):
             return "unit_id_no_response_3"
         except Exception as e:
             _LOGGER.debug("Error testing unit_id %d: %s", unit_id, e)
-            return "unit_id_no_response_4"
+            return "unit_id_no_response {e}"
             
     except OSError as err:
         err_msg = str(err).lower()
