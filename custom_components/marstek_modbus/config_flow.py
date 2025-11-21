@@ -273,7 +273,7 @@ async def async_test_modbus_connection(host: str, port: int, unit_id: int = 1):
         try:
             # Try to read a common register (register 0) with timeout to test unit_id
             async def _test_read():
-                return client.read_holding_registers(address=0, count=1, slave=unit_id)
+                return client.read_holding_registers(address=32100, count=1, slave=unit_id)
                 
             result = await asyncio.wait_for(_test_read(), timeout=5.0)
             
