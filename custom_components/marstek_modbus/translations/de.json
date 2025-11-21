@@ -18,7 +18,10 @@
             "timed_out": "Zeitüberschreitung der Verbindung",
             "invalid_host": "Ungültiger Host oder IP-Adresse",
             "invalid_unit_id": "Ungültige Modbus Unit-ID (muss 1-255 sein)",
-            "unit_id_no_response": "Keine Antwort von Unit-ID. Prüfen Sie, ob das Gerät diese Unit-ID verwendet",
+            "unit_id_no_response_1": "1Keine Antwort von Unit-ID. Prüfen Sie, ob das Gerät diese Unit-ID verwendet",
+            "unit_id_no_response_2": "2Keine Antwort von Unit-ID. Prüfen Sie, ob das Gerät diese Unit-ID verwendet",
+            "unit_id_no_response_3": "3Keine Antwort von Unit-ID. Prüfen Sie, ob das Gerät diese Unit-ID verwendet",
+            "unit_id_no_response_4": "4Keine Antwort von Unit-ID. Prüfen Sie, ob das Gerät diese Unit-ID verwendet",
             "cannot_connect": "Verbindung zum Gerät nicht möglich"
         },
         "abort": {
