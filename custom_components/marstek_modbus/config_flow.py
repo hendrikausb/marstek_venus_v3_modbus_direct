@@ -284,21 +284,21 @@ async def async_test_modbus_connection(host: str, port: int, unit_id: int = 1):
                 # Some Modbus errors are OK - they indicate the unit_id responds but register doesn't exist
                 error_code = getattr(result, 'exception_code', None)
                 if error_code in [1, 2, 3, 4]:  # Common Modbus exception codes for valid unit but invalid register
-                    _LOGGER.info("Unit ID %d responds (got expected Modbus exception %s)", unit_id, error_code)
+                    _LOGGER.debug("Unit ID %d responds (got expected Modbus exception %s)", unit_id, error_code)
                     return None  # This is actually success - unit_id responds
                 else:
-                    _LOGGER.info("Unit ID %d error: %s", unit_id, result)
+                    _LOGGER.debug("Unit ID %d error: %s", unit_id, result)
                     return "2unit_id_no_response"
             else:
                 # Got valid data - unit_id is definitely correct
-                _LOGGER.info("Unit ID %d test successful", unit_id)
+                _LOGGER.debug("Unit ID %d test successful", unit_id)
                 return None
                 
         except asyncio.TimeoutError:
-            _LOGGER.info("Timeout testing unit_id %d - may be incorrect", unit_id)
+            _LOGGER.debug("Timeout testing unit_id %d - may be incorrect", unit_id)
             return "3unit_id_no_response"
         except Exception as e:
-            _LOGGER.info("Error testing unit_id %d: %s", unit_id, e)
+            _LOGGER.debug("Error testing unit_id %d: %s", unit_id, e)
             return "4unit_id_no_response"
             
     except OSError as err:
