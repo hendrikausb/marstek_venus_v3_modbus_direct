@@ -273,13 +273,13 @@ async def async_test_modbus_connection(host: str, port: int, unit_id: int = 1):
         try:
             # Try to read a common register (register 0) with timeout to test unit_id
             async def _test_read():
-                return client.read_holding_registers(address=32101, count=1, slave=unit_id)
+                return client.read_holding_registers(address=0, count=1, slave=unit_id)
                 
             result = await asyncio.wait_for(_test_read(), timeout=5.0)
             
             # Check if we got any response (even an error response indicates unit_id communication)
             if result is None:
-                return "unit_id_no_response"
+                return "1unit_id_no_response"
             elif hasattr(result, 'isError') and result.isError():
                 # Some Modbus errors are OK - they indicate the unit_id responds but register doesn't exist
                 error_code = getattr(result, 'exception_code', None)
@@ -288,7 +288,7 @@ async def async_test_modbus_connection(host: str, port: int, unit_id: int = 1):
                     return None  # This is actually success - unit_id responds
                 else:
                     _LOGGER.debug("Unit ID %d error: %s", unit_id, result)
-                    return "unit_id_no_response"
+                    return "2unit_id_no_response"
             else:
                 # Got valid data - unit_id is definitely correct
                 _LOGGER.debug("Unit ID %d test successful", unit_id)
@@ -296,10 +296,10 @@ async def async_test_modbus_connection(host: str, port: int, unit_id: int = 1):
                 
         except asyncio.TimeoutError:
             _LOGGER.debug("Timeout testing unit_id %d - may be incorrect", unit_id)
-            return "unit_id_no_response"
+            return "3unit_id_no_response"
         except Exception as e:
             _LOGGER.debug("Error testing unit_id %d: %s", unit_id, e)
-            return "unit_id_no_response"
+            return "4unit_id_no_response"
             
     except OSError as err:
         err_msg = str(err).lower()
