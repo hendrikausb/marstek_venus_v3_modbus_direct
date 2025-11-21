@@ -1,4 +1,4 @@
-# Marstek Venus Battery - Home Assistant Integration
+# Fork not ready! Marstek Venus Battery - Home Assistant Integration
 
 [![GitHub Release](https://img.shields.io/github/v/release/ViperRNMC/marstek_venus_modbus)](https://github.com/ViperRNMC/marstek_venus_modbus/releases)
 [![GitHub Issues](https://img.shields.io/github/issues/ViperRNMC/marstek_venus_modbus)](https://github.com/ViperRNMC/marstek_venus_modbus/issues)
