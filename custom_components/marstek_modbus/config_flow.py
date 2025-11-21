@@ -279,7 +279,7 @@ async def async_test_modbus_connection(host: str, port: int, unit_id: int = 1):
             
             # Check if we got any response (even an error response indicates unit_id communication)
             if result is None:
-                return "unit_id_no_response"
+                return "unit_id_no_response_1"
             elif hasattr(result, 'isError') and result.isError():
                 # Some Modbus errors are OK - they indicate the unit_id responds but register doesn't exist
                 error_code = getattr(result, 'exception_code', None)
@@ -288,7 +288,7 @@ async def async_test_modbus_connection(host: str, port: int, unit_id: int = 1):
                     return None  # This is actually success - unit_id responds
                 else:
                     _LOGGER.debug("Unit ID %d error: %s", unit_id, result)
-                    return "unit_id_no_response"
+                    return "unit_id_no_response_2"
             else:
                 # Got valid data - unit_id is definitely correct
                 _LOGGER.debug("Unit ID %d test successful", unit_id)
@@ -296,10 +296,10 @@ async def async_test_modbus_connection(host: str, port: int, unit_id: int = 1):
                 
         except asyncio.TimeoutError:
             _LOGGER.debug("Timeout testing unit_id %d - may be incorrect", unit_id)
-            return "unit_id_no_response"
+            return "unit_id_no_response_3"
         except Exception as e:
             _LOGGER.debug("Error testing unit_id %d: %s", unit_id, e)
-            return "unit_id_no_response"
+            return "unit_id_no_response_4"
             
     except OSError as err:
         err_msg = str(err).lower()
