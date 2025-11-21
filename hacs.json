@@ -1,9 +1,9 @@
 {
-  "name": "Marstek Venus Modbus",
+  "name": "Marstek Venus v3 Modbus direct",
   "config_flow": true,
   "domains": ["marstek_modbus"],
   "homeassistant": "2025.9.0",
-  "country": "NL",
+  "country": "DE",
   "render_readme": true,
   "render_hacs": true,
   "issue_tracker": "https://github.com/viperrnmd/marstek_modbus_modbus/issues",
